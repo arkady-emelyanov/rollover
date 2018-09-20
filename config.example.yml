@@ -1,0 +1,12 @@
+elasticsearch:
+  endpoints:
+  - http://127.0.0.1:9200
+
+rollover:
+- alias: logs-write
+  new_name: logs-write-%Y-%m-%d-%H%M%s
+  conditions:
+    max_docs: 10000
+    max_age: 2h
+  optimize:
+    max_segments: 1
