@@ -1,0 +1,18 @@
+language: go
+go:
+- 1.11.x
+
+script:
+- make test
+
+before_deploy:
+- make crosscompile
+
+deploy:
+  provider: releases
+  api_key:
+    secure: W5fr42vj+HnsFxJr6mGovis9ge7hpLySET00IVqK0+KuXSprnnqcuTwj5IGSMZ31fALU9wIkvFnQGqBNeO/8qCFPSE1z0fRqN7/g+TGAyyQm7yH39ReoOBx7E5vuyoPUPTrjX6mjZvmxaXtoLyClX5JsLEKXrcsP47r3BNysc/zlyoNqMAK2IlKApoBOSmpDQMBTEK9cD1bc8IMgucDp4xwTaxHkVpmg+TTmcV9Mo9was/U2LLEo7zmHfd2Qk5Ln6P1m0TJsndt8U0QaDF+4lL4mBf9M4/D56y9kHSAsWgJZmydEOrWGuZB3+g8EsLAsuvLQPvtvHDF5eDyp2SkVtv3oTQQhxn1beRaG7guOI4rSHQshxGW4psVeZiUm79RjxVX+rvdxahCzOufg3hO9mSnuuBWpiZeVhbxOjPc1HWI8w8aHjmZDWlBboIYgmVd3GmXUYEvNm5fToN1TpyxxOgyjx4Y0kc6FntDlQO1lsuXuG+QLSlPvfW5+J0ayq15HbOzSRnWNOxhseYarKgOcQOXW8bQI1ncDes0gyoS09FeXwGwqN/7A44+aalAiI+nlWZCgMyNcMsLOzSnJ9haKqT/bZMgcD4VP0FgGhqpLgaJUcTN2lmLcVDLXh/eDYv84oxKmFSnSTcqmorI5SY4I/htGOsbGQcRF/XGA2xSsOxk=
+  file_glob: true
+  file: build/bin/*
+  on:
+    repo: arkady-emelyanov/rollover
