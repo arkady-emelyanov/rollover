@@ -4,9 +4,11 @@ elasticsearch:
 
 rollover:
 - alias: logs-write
+  # %Y - year, %m - month, %d - day, %H - hour, %M - minute, %s - second
   new_name: logs-write-%Y-%m-%d-%H%M%s
   conditions:
     max_docs: 10000
+    # d - days, h - hours (ElasticSearch time units)
     max_age: 2h
   optimize:
     max_segments: 1
